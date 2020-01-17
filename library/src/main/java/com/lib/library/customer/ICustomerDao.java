@@ -9,7 +9,7 @@ import java.util.List;
  * Created by wilfrid on 17/01/2020.
  */
 @Repository
-public interface ICustomerDAO extends JpaRepository<Customer, Integer> {
+public interface ICustomerDao extends JpaRepository<Customer, Integer> {
     public List<Customer> findAll();
     public  Customer findByEmail(String email);
 
