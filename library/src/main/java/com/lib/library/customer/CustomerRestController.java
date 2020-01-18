@@ -1,5 +1,8 @@
 package com.lib.library.customer;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,6 +43,10 @@ public class CustomerRestController {
      * @return
      */
     @PostMapping("/addCustomer")
+    @ApiOperation(value = "Add a new Customer in the Library", response = CustomerDTO.class)
+    @ApiResponses(value = { @ApiResponse(code = 409, message = "Conflict: the customer already exist"),
+            @ApiResponse(code = 201, message = "Created: the customer is successfully inserted"),
+            @ApiResponse(code = 304, message = "Not Modified: the customer is unsuccessfully inserted") })
     public ResponseEntity<CustomerDTO> createNewCustomer(@RequestBody CustomerDTO customerDTORequest) {
         //, UriComponentsBuilder uriComponentBuilder
         Customer existingCustomer = customerService.findCustomerByEmail(customerDTORequest.getEmail());
@@ -109,6 +116,11 @@ public class CustomerRestController {
      * @return
      */
     @GetMapping("/searchByLastName")
+    @ApiOperation(value="Search a customer in the Library by its Last name", response = List.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Ok: successfull research"),
+            @ApiResponse(code = 204, message = "No Content: no result founded"),
+    })
     public ResponseEntity<List<CustomerDTO>> searchBookByLastName(@RequestParam("lastName") String lastName) {
         //,    UriComponentsBuilder uriComponentBuilder
         List<Customer> customers = customerService.findCustomerByLastName(lastName);
@@ -128,6 +140,12 @@ public class CustomerRestController {
      * @return
      */
     @PutMapping("/sendEmailToCustomer")
+    @ApiOperation(value="Send an email to customer of the Library", response = String.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Ok: Email successfully sent"),
+            @ApiResponse(code = 404, message = "Not Found: no customer found, or wrong email"),
+            @ApiResponse(code = 403, message = "Forbidden: Email cannot be sent")
+    })
     public ResponseEntity<Boolean> sendMailToCustomer(@RequestBody MailDTO loanMailDto, UriComponentsBuilder uriComponentBuilder) {
 
         Customer customer = customerService.findCustomerById(loanMailDto.getCustomerId());
