@@ -1,6 +1,7 @@
 {
-  "/library": {
+  "/": {
     "target": "http://localhost:8081",
-    "secure": false
+    "secure": false,
+    "changeOrigin": "true"
   }
 }

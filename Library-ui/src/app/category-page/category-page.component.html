@@ -1,0 +1,16 @@
+<app-message-modal *ngIf="displayMessageModal" [messageModal]="messageModal"></app-message-modal>
+
+<div class="div-add-category">
+  <fieldset>
+    <legend><b>{{titleSaveOrUpdate}}</b></legend>
+    <form #addCategoryForm="ngForm" (ngSubmit)="saveOrUpdateCategory(addCategoryForm)">
+      <span><label for="code" class="category-label">Code:</label><input name="code" class="category-input" type="text" required [(ngModel)]="category.code"></span>
+      <span><label for="label" class="category-label">Label:</label>
+        <input name="label" class="category-input" type="text" required [(ngModel)]="category.label">
+        <input [value]="actionButton" class="category-submit-button" type=submit [disabled]="!addCategoryForm.form.valid"/></span>
+      <span class="span-category-submit"></span>
+    </form>
+    <button class="clear-form-button" (click)="clearForm(addCategoryForm)">Clear Form</button>
+  </fieldset>
+</div>
+<app-back-to-menu></app-back-to-menu>
