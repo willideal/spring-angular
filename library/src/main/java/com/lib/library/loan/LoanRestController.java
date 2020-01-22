@@ -22,6 +22,7 @@ import java.util.stream.Collectors;
  */
 @RestController
 @RequestMapping("/rest/loan/api")
+@CrossOrigin(origins = "http://localhost:4200")
 public class LoanRestController {
     public static final Logger LOGGER = LoggerFactory.getLogger(LoanRestController.class);
 

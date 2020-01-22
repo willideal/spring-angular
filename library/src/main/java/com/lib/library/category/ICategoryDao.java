@@ -9,6 +9,6 @@ import javax.sql.rowset.CachedRowSet;
  * Created by wilfrid on 17/01/2020.
  */
 @Repository
-public interface ICategoryDao extends JpaRepository<Category, Integer> {
-    public Category findByCode(int code);
+public interface ICategoryDao extends JpaRepository<Category, String> {
+    public Category findByCode(String code);
 }

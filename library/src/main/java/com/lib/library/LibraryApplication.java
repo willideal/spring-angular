@@ -33,7 +33,7 @@ public class LibraryApplication {
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder().title("Library Spring Boot REST API Documentation")
 				.description("REST APIs For Managing Books loans in a Library")
-				.contact(new Contact("Georges Kemayo", "https://gkemayo.developpez.com/", "noreply.library.test@gmail.com"))
+				.contact(new Contact("Will N.", "github/willideal", "willideal@yahoo.fr"))
 				.version("1.0")
 				.build();
 	}

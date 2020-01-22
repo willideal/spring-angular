@@ -7,5 +7,12 @@ import java.util.List;
  */
 public interface ICategoryService {
     public List<Category> getAllCategories();
+    public Category saveCategory(Category category);
+
+    public Category updateCategory(Category category);
+
+    public void deleteCategory(String code);
+
+    public Category findCategoryByCode(String code);
 
 }
